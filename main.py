@@ -19,6 +19,19 @@ def send_msg():
         distritos = json.load(open(f"contacts/{file}"))
 
 
+        '''
+        {
+          "braga" :
+            {
+                "nome": "example",
+                "telefone": "+351",
+                "apikey": ""
+            }
+        
+        }
+        '''
+
+
         for concelho in distritos:
             nome = distritos[concelho]["nome"]
             api_key = distritos[concelho]["apikey"]
@@ -28,7 +41,7 @@ def send_msg():
             print(text_final)
             text_norm = urllib.parse.quote_plus(text_final)
 
-            #url = f"https://api.callmebot.com/whatsapp.php?phone={telefone}&text={text_norm}&apikey={api_key}"
+            url = f"https://api.callmebot.com/whatsapp.php?phone={telefone}&text={text_norm}&apikey={api_key}"
 
 
             try:
