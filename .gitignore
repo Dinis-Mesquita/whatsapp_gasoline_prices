@@ -1,2 +1,4 @@
 contacts/
 .venv
+.idea
+__pycache__
