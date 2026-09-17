@@ -3,12 +3,14 @@ import time
 import json
 import requests
 import os
-from scrapper import scrapper_main_page
+from scrapper import avr_prices, avr_prices_by_brand
 def produce_msg(concelho):
 
 
     text_final=""
-    text_final += f"\n{scrapper_main_page()}\n"
+    text_final += f"\n{avr_prices()}\n\n"
+    text_final += f"\n{avr_prices_by_brand(5)}\n"
+
 
     return text_final
 def send_msg():
