@@ -11,17 +11,18 @@ def variation_in_sentence(sentence):
     if "Subida" in sentence:
 
         var = "+"
-        value = re.search(r"\d*\,*\d*", sentence)
+        value = re.search(r"\d+\,*\d*", sentence)
         value = value.group(0)
 
     elif "Descida" in sentence:
         var = "-"
-        value = re.search(r"\d*\,*\d*", sentence)
+        value = re.search(r"\d+\,*\d*", sentence)
         value = value.group(0)
 
     else:
         var= None
         value= None
+
 
     return var, value
 
@@ -44,7 +45,8 @@ def avr_prices():
         #print(atritbutes)
 
         fuel = atritbutes['title']
-        price = atritbutes['data-price'].replace(".",",")
+        price = float(atritbutes['data-price'])
+
 
         price_change = sec.contents[2].get_text()
 
@@ -74,7 +76,7 @@ def avr_prices():
             var, price = variation_in_sentence(resume[cat]['price_change'])
             texto_final += f"{cat} : {resume[cat]['current_price']} ({var}{price} cênt.)\n"
 
-
+    #print(texto_final)
     return texto_final
 
 def avr_prices_by_brand(limit):
@@ -143,4 +145,4 @@ def avr_prices_by_brand(limit):
 
 
 if __name__ == '__main__':
-    avr_prices_by_brand(5)
+    avr_prices()
