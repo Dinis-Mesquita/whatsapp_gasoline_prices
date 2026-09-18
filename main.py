@@ -20,11 +20,11 @@ def produce_msg(distrito, concelho):
     #text_final += f"\n{average_prices}\n\n"
     #text_final += f"\n{average_prices_by_brand}\n"
     print("Finished main page")
-    time.sleep(random.randrange(5,10))
+    #time.sleep(random.randrange(5,10))
     #text_final += f"\n{average_prices_distritos}\n"
     #text_final += f"\n{average_price_specific_distrito}\n"
     print("Finished distritos page")
-    time.sleep(random.randrange(5, 10))
+    #time.sleep(random.randrange(5, 10))
     #text_final += f"\n{average_prices_concelhos}\n"
     #text_final += f"\n{average_price_specific_concelho}\n"
     print("Finished concelhos page")
@@ -61,13 +61,14 @@ def send_msg():
             telefone = concelhos[concelho]["telefone"]
 
             i=0
-            
+            #%0A é um "/n"
             text_final = produce_msg(distrito.strip(".json"),concelho)
-            print(text_final)
+            #print(text_final)
             print(f"sent at:{datetime.datetime.now()}")
             text_norm = urllib.parse.quote_plus(text_final)
+            print(text_norm)
 
-            url = f"https://api.callmebot.com/whatsapp.php?phone={telefone}&text={text_norm}&apikey={api_key}"
+            #url = f"https://api.callmebot.com/whatsapp.php?phone={telefone}&text={text_norm}&apikey={api_key}"
 
 
             try:
