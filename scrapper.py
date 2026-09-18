@@ -77,7 +77,7 @@ def avr_prices():
             texto_final += f"{cat} : {resume[cat]['current_price']} ({var}{price} cênt.)\n"
 
     #print(texto_final)
-    return texto_final
+    return texto_final, resume
 
 def avr_prices_by_brand(limit):
 
@@ -103,7 +103,7 @@ def avr_prices_by_brand(limit):
                 atributes = fuel.attrs
 
 
-                values[atributes['title']] = float(atributes['data-price'])
+                values[atributes['title']] = float(atributes['data-price']) if atributes['data-price']!= "0" else "---"
 
 
         except AttributeError:
@@ -130,19 +130,184 @@ def avr_prices_by_brand(limit):
         else:
             texto_final +=f"\n\n{cat}\n"
 
-
-
             for fuel in resume[cat]:
-                texto_final +=f"•{fuel}: {resume[cat][fuel]}\n"
+                texto_final +=f"•{fuel}: {str(resume[cat][fuel]).replace('.',',')}€\n"
 
 
 
 
     #print(texto_final)
-    return texto_final
+    return texto_final, resume
 
+def avr_prices_distritos():
+
+    search_url = f"https://www.maisgasolina.com/lista-de-postos/"
+    response = requests.get(search_url, headers=headers)
+    response.encoding = 'utf-8'
+    soup = BeautifulSoup(response.text, "html.parser")
+
+    #print(soup.prettify())
+    lista_distritos = soup.body.main.div.ul
+    resume={}
+
+    for sec in lista_distritos.find_all('li'):
+        values = {}
+        distrito = sec.a.text
+        postos = sec.span.text
+        values['Postos'] = postos
+
+        for fuel in sec.div.find_all('span'):
+            atributes = fuel.attrs
+            values[atributes['title']] = float(atributes['data-price']) if atributes['data-price'] != "0" else "---"
+
+
+        resume[distrito] = values
+
+    #print(resume)
+    with open(f"distritos_media.json", "w", encoding="utf-8") as f:
+        json.dump(resume, f, indent=4, ensure_ascii=False)
+
+
+    texto_final=f"PREÇOS MÉDIOS DOS COMBUSTÍVEIS POR DISTRITO\n"
+
+
+    for cat in resume:
+
+            texto_final +=f"\n\n{cat}\n"
+
+            for val in resume[cat]:
+                if val == "Postos":
+                    texto_final += f"({resume[cat][val]})\n"
+                else:
+                    texto_final +=f"•{val}: {str(resume[cat][val]).replace('.',',')}€\n"
+
+    #print(texto_final)
+    return texto_final, resume
+
+def avr_price_specific_distrito(distrito):
+    _, resume =  avr_prices_distritos()
+    texto_final = f"PREÇOS MÉDIOS DOS COMBUSTÍVEIS EM {distrito.upper()}\n"
+    for cat in resume:
+            if cat.upper() == distrito.upper():
+                for val in resume[cat]:
+                    if val == "Postos":
+                        texto_final += f"({resume[cat][val]})\n"
+                    else:
+                        texto_final +=f"•{val}: {str(resume[cat][val]).replace('.',',')}€\n"
+
+    #print(texto_final)
+    return texto_final, resume
+def avr_prices_concelhos(distrito):
+
+    search_url = f"https://www.maisgasolina.com/lista-de-postos/{distrito.replace(' ','-')}/"
+    response = requests.get(search_url, headers=headers)
+    response.encoding = 'utf-8'
+    soup = BeautifulSoup(response.text, "html.parser")
+
+    #print(soup.prettify())
+    lista_concelhos = soup.body.main.div.ul
+    resume={}
+
+    for sec in lista_concelhos.find_all('li'):
+        values = {}
+        concelho = sec.a.text
+        postos = sec.span.text
+        values['Postos'] = postos
+
+        for fuel in sec.div.find_all('span'):
+            atributes = fuel.attrs
+            values[atributes['title']] = float(atributes['data-price']) if atributes['data-price'] != "0" else "---"
+
+
+        resume[concelho] = values
+
+    #print(resume)
+    with open(f"distritos_media.json", "w", encoding="utf-8") as f:
+        json.dump(resume, f, indent=4, ensure_ascii=False)
+
+
+    texto_final=f"PREÇOS MÉDIOS DOS COMBUSTÍVEIS POR CONCELHO NO DISTRITO DE {distrito.upper()}\n"
+
+
+    for cat in resume:
+
+            texto_final +=f"\n\n{cat}\n"
+
+            for val in resume[cat]:
+                if val == "Postos":
+                    texto_final += f"({resume[cat][val]})\n"
+                else:
+                    texto_final +=f"•{val}: {str(resume[cat][val]).replace('.',',')}€\n"
+
+    #print(texto_final)
+    return texto_final, resume
+
+
+def avr_price_specific_concelho(distrito, concelho):
+    _, resume =  avr_prices_concelhos(distrito)
+    texto_final = f"PREÇO MÉDIO DOS COMBUSTÍVEIS EM {concelho.upper()} ({distrito.upper()})\n"
+    for cat in resume:
+            if cat.upper() == concelho.upper():
+                for val in resume[cat]:
+                    if val == "Postos":
+                        texto_final += f"({resume[cat][val]})\n"
+                    else:
+                        texto_final +=f"•{val}: {str(resume[cat][val]).replace('.',',')}€\n"
+
+    #print(texto_final)
+    return texto_final, resume
+
+
+def prices_concelho(distrito, concelho):
+
+    search_url = f"https://www.maisgasolina.com/lista-de-postos/{distrito.replace(' ','-')}/{concelho.replace(' ','-')}"
+
+    response = requests.get(search_url, headers=headers)
+    response.encoding = 'utf-8'
+    soup = BeautifulSoup(response.text, "html.parser")
+    #print(soup.prettify())
+    lista_postos = soup.body.main.div.ul
+
+
+    resume={}
+
+    for sec in lista_postos.find_all('li'):
+        values = {}
+        posto = sec.a.text
+        #print(posto)
+        #print(posto.find("span", class_="updated-date"))
+
+        for atualizacao in sec.find_all("span", class_="updated-date"):
+           atualizacao = atualizacao.text
+           values["atualizacao"] = atualizacao.replace('Actualização: ','')
+
+        for prices in sec.find_all("span", class_="fuel-prices"):
+
+
+            for fuel in prices.find_all('span'):
+                atributes = fuel.attrs
+
+                values[atributes['title']] = float(atributes['data-price']) if atributes['data-price'] != "0" else "---"
+
+        resume[posto] = values
+
+    #print(resume)
+    with open(f"precos_{concelho}.json", "w", encoding="utf-8") as f:
+        json.dump(resume, f, indent=4, ensure_ascii=False)
+
+    texto_final = f"PREÇOS DOS POSTOS EM {concelho.upper()} ({distrito.upper()})\n(Ordenado por preço de gasolina)\n"
+    for cat in resume:
+            texto_final += f"\n{cat}\n"
+            for val in resume[cat]:
+                if val == "atualizacao":
+                    texto_final += f"Atualizado: {resume[cat][val]}\n"
+                else:
+                    texto_final +=f"•{val}: {str(resume[cat][val]).replace('.',',')}€\n"
+
+    #print(texto_final)
+    return texto_final, resume
 
 
 
 if __name__ == '__main__':
-    avr_prices()
+    prices_concelho("braga","barcelos")

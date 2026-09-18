@@ -1,11 +1,11 @@
 {
     "Gasolina 95 Simples": {
-        "current_price": 2.12,
-        "price_change": "Descida de 2,7 cêntimos"
+        "current_price": 2.119,
+        "price_change": "Preço sem alterações"
     },
     "Gasóleo Simples": {
         "current_price": 2.227,
-        "price_change": "Subida de 5 cêntimos"
+        "price_change": "Preço sem alterações"
     },
     "GPL Auto": {
         "current_price": 0.959,

@@ -1,37 +1,37 @@
 {
     "Plenergy": {
-        "Gasolina 95 Simples": 1.985,
-        "Gasóleo Simples": 2.074,
-        "GPL Auto": 0.0
+        "Gasolina 95 Simples": 1.983,
+        "Gasóleo Simples": 2.069,
+        "GPL Auto": "---"
     },
     "Petroprix": {
-        "Gasolina 95 Simples": 1.99,
-        "Gasóleo Simples": 2.085,
-        "GPL Auto": 0.0
+        "Gasolina 95 Simples": 1.987,
+        "Gasóleo Simples": 2.084,
+        "GPL Auto": "---"
     },
     "Bxpress": {
-        "Gasolina 95 Simples": 1.998,
-        "Gasóleo Simples": 2.096,
-        "GPL Auto": 0.0
+        "Gasolina 95 Simples": 1.995,
+        "Gasóleo Simples": 2.089,
+        "GPL Auto": "---"
     },
     "Q8": {
         "Gasolina 95 Simples": 2.01,
         "Gasóleo Simples": 2.115,
         "GPL Auto": 0.919
     },
+    "Auchan": {
+        "Gasolina 95 Simples": 2.013,
+        "Gasóleo Simples": 2.119,
+        "GPL Auto": 0.898
+    },
     "E.Leclerc": {
         "Gasolina 95 Simples": 2.013,
         "Gasóleo Simples": 2.125,
         "GPL Auto": 0.936
     },
-    "Auchan": {
-        "Gasolina 95 Simples": 2.016,
-        "Gasóleo Simples": 2.125,
-        "GPL Auto": 0.898
-    },
     "Intermarché": {
-        "Gasolina 95 Simples": 2.018,
-        "Gasóleo Simples": 2.108,
+        "Gasolina 95 Simples": 2.017,
+        "Gasóleo Simples": 2.111,
         "GPL Auto": 0.912
     },
     "Ecobrent": {
@@ -40,14 +40,14 @@
         "GPL Auto": 0.957
     },
     "Rede Energia": {
-        "Gasolina 95 Simples": 2.045,
-        "Gasóleo Simples": 2.149,
-        "GPL Auto": 0.0
+        "Gasolina 95 Simples": 2.042,
+        "Gasóleo Simples": 2.15,
+        "GPL Auto": "---"
     },
     "Pingo Doce": {
         "Gasolina 95 Simples": 2.052,
         "Gasóleo Simples": 2.113,
-        "GPL Auto": 0.0
+        "GPL Auto": "---"
     },
     "OZ Energia": {
         "Gasolina 95 Simples": 2.071,
@@ -56,46 +56,46 @@
     },
     "Nova": {
         "Gasolina 95 Simples": 2.076,
-        "Gasóleo Simples": 2.13,
-        "GPL Auto": 0.0
+        "Gasóleo Simples": 2.141,
+        "GPL Auto": "---"
     },
     "Moeve": {
-        "Gasolina 95 Simples": 2.096,
+        "Gasolina 95 Simples": 2.097,
         "Gasóleo Simples": 2.201,
         "GPL Auto": 0.98
     },
     "Prio": {
-        "Gasolina 95 Simples": 2.102,
-        "Gasóleo Simples": 2.187,
+        "Gasolina 95 Simples": 2.101,
+        "Gasóleo Simples": 2.189,
         "GPL Auto": 0.942
     },
     "Freitas": {
-        "Gasolina 95 Simples": 2.131,
-        "Gasóleo Simples": 2.225,
+        "Gasolina 95 Simples": 2.13,
+        "Gasóleo Simples": 2.227,
         "GPL Auto": 0.947
     },
     "Repsol": {
-        "Gasolina 95 Simples": 2.143,
+        "Gasolina 95 Simples": 2.142,
         "Gasóleo Simples": 2.256,
         "GPL Auto": 0.958
+    },
+    "Galp": {
+        "Gasolina 95 Simples": 2.146,
+        "Gasóleo Simples": 2.257,
+        "GPL Auto": 0.967
     },
     "Shell": {
         "Gasolina 95 Simples": 2.148,
         "Gasóleo Simples": 2.256,
         "GPL Auto": 1.005
     },
-    "Galp": {
-        "Gasolina 95 Simples": 2.149,
-        "Gasóleo Simples": 2.259,
-        "GPL Auto": 0.967
-    },
     "Alves Bandeira": {
-        "Gasolina 95 Simples": 2.153,
-        "Gasóleo Simples": 2.257,
+        "Gasolina 95 Simples": 2.152,
+        "Gasóleo Simples": 2.258,
         "GPL Auto": 0.929
     },
     "BP": {
-        "Gasolina 95 Simples": 2.176,
+        "Gasolina 95 Simples": 2.175,
         "Gasóleo Simples": 2.29,
         "GPL Auto": 0.99
     }

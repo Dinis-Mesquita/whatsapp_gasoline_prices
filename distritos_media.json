@@ -1,0 +1,86 @@
+{
+    "Amares": {
+        "Postos": "6 postos",
+        "Gasolina 95 Simples": 2.093,
+        "Gasóleo Simples": 2.202,
+        "GPL Auto": "---"
+    },
+    "Barcelos": {
+        "Postos": "36 postos",
+        "Gasolina 95 Simples": 2.099,
+        "Gasóleo Simples": 2.209,
+        "GPL Auto": 0.933
+    },
+    "Braga": {
+        "Postos": "49 postos",
+        "Gasolina 95 Simples": 2.1,
+        "Gasóleo Simples": 2.209,
+        "GPL Auto": 0.934
+    },
+    "Cabeceiras de Basto": {
+        "Postos": "6 postos",
+        "Gasolina 95 Simples": 2.153,
+        "Gasóleo Simples": 2.241,
+        "GPL Auto": 0.999
+    },
+    "Celorico de Basto": {
+        "Postos": "6 postos",
+        "Gasolina 95 Simples": 2.156,
+        "Gasóleo Simples": 2.28,
+        "GPL Auto": "---"
+    },
+    "Esposende": {
+        "Postos": "8 postos",
+        "Gasolina 95 Simples": 2.151,
+        "Gasóleo Simples": 2.267,
+        "GPL Auto": 0.969
+    },
+    "Fafe": {
+        "Postos": "12 postos",
+        "Gasolina 95 Simples": 2.11,
+        "Gasóleo Simples": 2.213,
+        "GPL Auto": 0.999
+    },
+    "Guimarães": {
+        "Postos": "37 postos",
+        "Gasolina 95 Simples": 2.086,
+        "Gasóleo Simples": 2.201,
+        "GPL Auto": 0.985
+    },
+    "Póvoa de Lanhoso": {
+        "Postos": "6 postos",
+        "Gasolina 95 Simples": 2.121,
+        "Gasóleo Simples": 2.21,
+        "GPL Auto": "---"
+    },
+    "Terras do Bouro": {
+        "Postos": "1 posto",
+        "Gasolina 95 Simples": "---",
+        "Gasóleo Simples": "---",
+        "GPL Auto": "---"
+    },
+    "Vieira do Minho": {
+        "Postos": "6 postos",
+        "Gasolina 95 Simples": 2.137,
+        "Gasóleo Simples": 2.279,
+        "GPL Auto": "---"
+    },
+    "Vila Nova de Famalicão": {
+        "Postos": "32 postos",
+        "Gasolina 95 Simples": 2.097,
+        "Gasóleo Simples": 2.207,
+        "GPL Auto": 0.929
+    },
+    "Vila Verde": {
+        "Postos": "15 postos",
+        "Gasolina 95 Simples": 2.086,
+        "Gasóleo Simples": 2.187,
+        "GPL Auto": 0.942
+    },
+    "Vizela": {
+        "Postos": "7 postos",
+        "Gasolina 95 Simples": 2.101,
+        "Gasóleo Simples": 2.214,
+        "GPL Auto": "---"
+    }
+}

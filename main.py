@@ -1,24 +1,45 @@
+import random
 import urllib.parse
+import datetime
 import time
 import json
 import requests
 import os
-from scrapper import avr_prices, avr_prices_by_brand
-def produce_msg(concelho):
-
+import random
+from scrapper import avr_prices, avr_prices_by_brand, avr_prices_distritos, avr_price_specific_distrito, avr_prices_concelhos, avr_price_specific_concelho,prices_concelho
+def produce_msg(distrito, concelho):
+    average_prices, _= avr_prices()
+    average_prices_by_brand, _= avr_prices_by_brand(5)
+    average_prices_distritos, _ = avr_prices_distritos()
+    average_price_specific_distrito, _ = avr_price_specific_distrito(distrito)
+    average_prices_concelhos, _ = avr_prices_concelhos(distrito)
+    average_price_specific_concelho, _ = avr_price_specific_concelho(distrito, concelho)
+    precos_concelho, _ = prices_concelho(distrito, concelho)
 
     text_final=""
-    text_final += f"\n{avr_prices()}\n\n"
-    text_final += f"\n{avr_prices_by_brand(5)}\n"
-
+    #text_final += f"\n{average_prices}\n\n"
+    #text_final += f"\n{average_prices_by_brand}\n"
+    print("Finished main page")
+    time.sleep(random.randrange(5,10))
+    #text_final += f"\n{average_prices_distritos}\n"
+    #text_final += f"\n{average_price_specific_distrito}\n"
+    print("Finished distritos page")
+    time.sleep(random.randrange(5, 10))
+    #text_final += f"\n{average_prices_concelhos}\n"
+    #text_final += f"\n{average_price_specific_concelho}\n"
+    print("Finished concelhos page")
+    #time.sleep(random.randrange(5, 10))
+    text_final += f"\n{precos_concelho}\n"
 
     return text_final
 def send_msg():
 
     #https://www.callmebot.com/blog/free-api-whatsapp-messages/
 
-    for file in os.listdir("contacts"):
-        distritos = json.load(open(f"contacts/{file}"))
+    for distrito in os.listdir("contacts"):
+        concelhos = json.load(open(f"contacts/{distrito}"))
+
+
 
 
         '''
@@ -34,13 +55,16 @@ def send_msg():
         '''
 
 
-        for concelho in distritos:
-            nome = distritos[concelho]["nome"]
-            api_key = distritos[concelho]["apikey"]
-            telefone = distritos[concelho]["telefone"]
+        for concelho in concelhos:
+            nome = concelhos[concelho]["nome"]
+            api_key = concelhos[concelho]["apikey"]
+            telefone = concelhos[concelho]["telefone"]
 
-            text_final = produce_msg(concelho)
+            i=0
+            
+            text_final = produce_msg(distrito.strip(".json"),concelho)
             print(text_final)
+            print(f"sent at:{datetime.datetime.now()}")
             text_norm = urllib.parse.quote_plus(text_final)
 
             url = f"https://api.callmebot.com/whatsapp.php?phone={telefone}&text={text_norm}&apikey={api_key}"
